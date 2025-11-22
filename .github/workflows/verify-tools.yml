@@ -1,0 +1,31 @@
+name: Verify V4RGR Tools
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Ensure all scripts are executable
+        run: |
+          echo "Checking script permissions..."
+          find . -name "*.sh" -exec chmod +x {} \;
+
+      - name: Bash Syntax Check
+        run: |
+          echo "Running bash syntax analysis..."
+          for file in $(find . -name "*.sh"); do
+            bash -n "$file" || exit 1
+          done
+
+      - name: Repository Structure Summary
+        run: |
+          echo "Repository Structure:"
+          tree -L 4
