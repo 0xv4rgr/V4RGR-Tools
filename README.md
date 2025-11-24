@@ -21,5 +21,5 @@ A collection of offensive security, OSINT, automation, and recon tools built by 
 ## 🧠 Author
 Created by **0xV4RGR**  
 Cybersecurity & OSINT Operator  
-VARGR Group
+V4RGR
 
